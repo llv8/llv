@@ -1,0 +1,12 @@
+BuildInfoMojo类里的注释里的注解必须存在。
+执行mvn clean install可以将plugin的jar包安装在本地仓库"~/.m2/repository"下。
+使用plugin的三种方式：
+1. 不通过pom.xml配置而直接使用plugin: mvn {groupId}:{artifactId}:{version}:{goal}
+2. 在setting.xml中添加：
+<pluginGroups>  
+       <pluginGroup>com.llv.sample.mavenplugin</pluginGroup>  
+</pluginGroups>
+如果指定pluginGroup,mvn会在com.llv.sample.mavenplugin这个group下查找plugin，
+否则mvn只会默认的"org.apache.maven.plugins" and "org.codehaus.mojo" 下查找。
+这样就可以执行mvn llv:buildinfo //mvn {plugin}:{goal}
+2. 在pom.xml中配置plugin, 
