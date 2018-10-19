@@ -3,4 +3,5 @@ find . -type d -name target|xargs rm -rf
 
 //如果.project文件已经提交，可以使用以下命令删除暂存区文件，然后再push到remote
 find . -name .project | xargs git rm --cached
-
+find . -name .classpath | xargs git rm --cached
+find . -name .settings | xargs git rm -r --cached
