@@ -11,18 +11,29 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<!-- pom不支持有多个父项目，如果子项目既要依赖llv,又要依赖springboot,可以使用下以配置方式，参考https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-maven-without-a-parent -->
-				<!-- Import dependency management from Spring Boot -->
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>2.0.4.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.46</version>
+			</dependency>
+			<dependency>
+				<groupId>com.rabbitmq</groupId>
+				<artifactId>amqp-client</artifactId>
+				<version>5.1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>4.1.27.Final</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<modules>
 		<module>sample</module>
-		<module>ddou</module>
+		<module>springbase</module>
 	</modules>
 </project>
