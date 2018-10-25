@@ -28,3 +28,7 @@ target
 .classpath
 .settings
 .metadata
+
+# ignore node_modules
+node
+node_modules
