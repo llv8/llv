@@ -19,6 +19,5 @@
 		<module>springbootSample</module>
 		<module>myMavenPluginSample</module>
     <module>myMavenPluginClientSample</module>
-    <module>reactjsSample</module>
   </modules>
 </project>
