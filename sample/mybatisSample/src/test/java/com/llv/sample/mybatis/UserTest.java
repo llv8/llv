@@ -1,13 +1,8 @@
 package com.llv.sample.mybatis;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 public class UserTest {

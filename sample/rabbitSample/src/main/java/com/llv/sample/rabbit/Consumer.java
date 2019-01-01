@@ -3,7 +3,6 @@ package com.llv.sample.rabbit;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
