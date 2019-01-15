@@ -13,7 +13,7 @@ import com.ddou.pojo.Customer;
 
 public interface CustomerMapper {
 
-	@Update("create table customer(id int not null primary key auto_increment,name varchar(40) not null,phone varchar(40) not null,email varchar(80) not null,password varchar(40))ENGINE=InnoDB DEFAULT CHARSET=utf8;")
+	@Update("create table customer(id int not null primary key auto_increment,name varchar(80) not null,phone varchar(40) not null,email varchar(80) not null,password varchar(40))ENGINE=InnoDB DEFAULT CHARSET=utf8;")
 	void schema();
 
 	@Select({ "select * from customer where id = #{id}" })

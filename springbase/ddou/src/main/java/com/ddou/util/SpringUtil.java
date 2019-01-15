@@ -20,7 +20,7 @@ public class SpringUtil implements ApplicationContextAware {
 		cxt = applicationContext;
 	}
 
-	public static <T> T getDao(Class<T> clazz) {
+	public static <T> T getBean(Class<T> clazz) {
 		T dao = getCxt().getBean(clazz);
 		return dao;
 	}
