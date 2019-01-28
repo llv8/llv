@@ -22,6 +22,17 @@
 			<artifactId>netty-all</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.google-collections</groupId>
+			<artifactId>google-collect</artifactId>
+			<version>snapshot-20080530</version>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
