@@ -7,6 +7,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -47,22 +48,17 @@ public class MultipleIOServer {
 							if (key.isReadable()) {
 								SocketChannel sc = (SocketChannel) key.channel();
 								// 分配用户台空间, 将数据从内核态 拷贝到 用户态
-								ByteBuffer readBuffer = ByteBuffer.allocate(4);
-								int readBytes = sc.read(readBuffer);
-								if (readBytes > 0) {
-									// 切换读写模式 详见下面的图, 表示自己目前可以读 [position, limit]
+								ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+								int readed = sc.read(readBuffer);
+								if (readed > 0) {
+									String content = new String(Arrays.copyOf(readBuffer.array(), readed));
+									System.out.println(content);
+									// 切换读写模式 表示自己目前可以读 [position, limit]
 									readBuffer.flip();
-									byte[] bytes = new byte[readBuffer.remaining()];
-									// 将buffer 数据拷贝到 bytes 数组
-									// 如果这里只收到一半的数据怎么办？
-									String body = new String(bytes, "UTF-8");
-									System.out.println(body);
-									// 将 read的数据 写回去
-									ByteBuffer writeBuffer = ByteBuffer.allocate(bytes.length);
-									writeBuffer.put(bytes);
-									writeBuffer.flip();
-									sc.write(writeBuffer);
-								} else if (readBytes < 0) {
+									while (readBuffer.hasRemaining()) {
+										sc.write(readBuffer);
+									}
+								} else if (readed < 0) {
 									// 对端链路关闭
 									key.cancel();
 									sc.close();
