@@ -23,7 +23,6 @@ public class NIOServer {
 			@Override
 			public void run() {
 				while (true) {
-					// 处理 每个连接是否可读, 这里的逻辑是 读4个字节后切断连接
 					for (SocketChannel socketChannel : Lists.newArrayList(socketChannelList)) {
 						try {
 							ByteBuffer buf = ByteBuffer.allocate(1024);

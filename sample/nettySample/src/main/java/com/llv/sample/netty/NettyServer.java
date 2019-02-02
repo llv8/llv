@@ -12,6 +12,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 public class NettyServer {
 	public class EchoHandler extends SimpleChannelInboundHandler {
@@ -41,11 +43,23 @@ public class NettyServer {
 					}).option(ChannelOption.SO_BACKLOG, 128) // server socket config backlog 设置为 128
 					.childOption(ChannelOption.SO_KEEPALIVE, true); // client socket config 设置 keepalive = true
 			// 绑定端口，开始接收进来的连接
-			ChannelFuture f = b.bind(9999).sync(); // 同步等待绑定本地端口
-
+			ChannelFuture f = b.bind(9999); // 同步等待绑定本地端口
+			f.addListener(new GenericFutureListener<Future<? super Void>>() {
+				@Override
+				public void operationComplete(Future<? super Void> future) throws Exception {
+					Thread.sleep(1000000);
+					System.out.println("connect successfully!");
+				}
+			});
 			// 等待服务器 socket 关闭 。
 			// 在这个例子中，这不会发生，但你可以优雅地关闭你的服务器。
-			f.channel().closeFuture().sync();
+			ChannelFuture closeFutrue = f.channel().closeFuture().sync();
+			/*
+			 * closeFutrue.addListener(new GenericFutureListener<Future<? super Void>>() {
+			 * 
+			 * @Override public void operationComplete(Future<? super Void> future) throws
+			 * Exception { System.out.println("close successfully!"); } });
+			 */
 		} finally {
 			// 释放两个线程池
 			acceptGroup.shutdownGracefully();
