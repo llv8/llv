@@ -19,7 +19,10 @@
 		<module>springbootSample</module>
 		<module>myMavenPluginSample</module>
 		<module>myMavenPluginClientSample</module>
-    <module>oneCent</module>
-    <module>futureSample</module>
+    	<module>oneCent</module>
+    	<module>futureSample</module>
+      	<module>jax-ws-implSample</module>
+      	<module>rmiSample</module>
+    <module>xmlrpcSample</module>
   </modules>
 </project>
