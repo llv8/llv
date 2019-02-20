@@ -24,5 +24,6 @@
       	<module>jax-ws-implSample</module>
       	<module>rmiSample</module>
     <module>xmlrpcSample</module>
+    <module>activemqSample</module>
   </modules>
 </project>
