@@ -1,11 +1,9 @@
 package com.llv.sample;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
 
 public class PromiseSample {
 	public static void main(String[] args) throws InterruptedException {
